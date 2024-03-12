@@ -169,7 +169,7 @@ def show_elements(
 def move_element(
     ctx: typer.Context,
     from_token: Annotated[IndexToken, typer.Argument(parser=IndexToken)],
-    to_token: Annotated[IndexToken, typer.Argument(parser=IndexToken)]
+    to_token: Annotated[IndexToken, typer.Argument(parser=IndexToken)],
 ) -> None:
     """
     Move an Element

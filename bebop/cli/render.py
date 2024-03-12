@@ -119,7 +119,7 @@ class TodosBox:
             title_align="left",
             box=box.HORIZONTALS,
             style="todos",
-            border_style="todos.box"
+            border_style="todos.box",
         )
 
 
