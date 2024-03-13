@@ -2,7 +2,9 @@
 
 A simple command line interface tool for Kanban boards management.
 
-## Install
+![bebop preview](docs/bebop.svg)
+
+## Installation
 
 ### Requirements
 You must have **python3.11+** installed.
@@ -11,22 +13,22 @@ You must have **python3.11+** installed.
 
 Clone the repository
 ```shell
-$ git clone git@github.com:Spike-D3v/bebop.git
+git clone git@github.com:Spike-D3v/bebop.git
 ```
 
 Install dependencies with [Poetry](https://python-poetry.org/)
 ```shell
-$ poetry install
+poetry install
 ```
 
 Build the project
 ```shell
-$ poetry build
+poetry build
 ```
 
 Install for current user, replacing `<bebop_sources_dir>` with the path where you cloned the repository, and the `<x>` with the version
 ```shell
-$ pip install -u /<bebop_sources_dir>/dist/bebop-<x>.tar.gz
+pip install -u /<bebop_sources_dir>/dist/bebop-<x>.tar.gz
 ```
 
 > Note: The preferred way to install is with [Pipx](https://github.com/pypa/pipx)
@@ -58,6 +60,8 @@ Find more useful commands by passing the `--help` option
 ```shell
 bebop --help
 ```
+
+![example](docs/bebop_show.svg)
 
 ## Acknowledgements
 

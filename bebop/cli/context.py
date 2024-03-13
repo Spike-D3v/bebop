@@ -3,6 +3,7 @@ from typing import Optional, Tuple
 
 import typer
 from rich.console import Console
+from rich.prompt import Prompt
 from rich.theme import Theme
 
 from bebop.cli.config import BebopConfig, DEFAULT_BOARD
@@ -106,3 +107,11 @@ class BebopContext:
     def print_kanban(self) -> None:
         kanban = render.Kanban(self.board, self.config)
         self.console.print(kanban)
+
+    def ask_token(self) -> IndexToken:
+        token = Prompt.ask("Enter a [token]Index Token[/]", console=self.console)
+        try:
+            return IndexToken(token)
+        except ValueError:
+            error = render.ErrorPanel("Invalid token")
+            raise typer.Abort()
