@@ -3,3 +3,5 @@
 .pyc
 /.vscode
 /dist
+*.spec
+/build

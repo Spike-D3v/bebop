@@ -483,3 +483,7 @@ def open_board_file(ctx: typer.Context) -> None:
     """
     manager: BebopContext = ctx.obj
     typer.launch(str(manager.board_path))
+
+
+if __name__ == "__main__":
+    app()
