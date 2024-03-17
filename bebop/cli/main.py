@@ -13,8 +13,10 @@ from bebop.cli.context import BebopContext
 from bebop.cli.helpers import render_checkmarks_menu
 from bebop.models import Post, Todo, Comment, PostGroup
 from bebop.token import IndexToken
+from .calendar import main as calendar
 
 app = typer.Typer(rich_markup_mode="rich")
+app.add_typer(calendar.app, name="calendar")
 
 
 class HelpPanel(StrEnum):
