@@ -40,9 +40,11 @@ class BebopContext:
 
     def load_board(self) -> Board:
         if not self.board_path.is_file():
-            dump = DEFAULT_BOARD.model_dump_json(indent=2, by_alias=True)
+            board = DEFAULT_BOARD.copy()
+            board.title = self.board_name.title()
+            dump = board.model_dump_json(indent=2, by_alias=True)
             self.board_path.write_text(dump)
-            return DEFAULT_BOARD
+            return board
 
         with self.board_path.open("r") as f:
             return Board.model_validate_json(f.read())
