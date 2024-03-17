@@ -144,7 +144,7 @@ class CommentsBox:
             title_align="left",
             box=box.HORIZONTALS,
             style="comments",
-            border_style="comments.box"
+            border_style="comments.box",
         )
 
 
