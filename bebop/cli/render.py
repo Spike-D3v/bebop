@@ -7,7 +7,7 @@ from rich.markdown import Markdown
 from rich.panel import Panel
 from rich.table import Table
 
-from bebop.models import Board, PostGroup, Post
+from bebop.models import Board, PostGroup, Post, Comment
 from bebop.token import IndexToken
 from .config import BebopConfig
 
@@ -124,6 +124,31 @@ class TodosBox:
 
 
 @dataclass
+class CommentsBox:
+    """Renderiza la caja de comentarios"""
+
+    comments: List[Comment]
+    config: BebopConfig
+
+    def __rich_console__(self, console: Console, options: ConsoleOptions) -> RenderResult:
+        rows = [""]
+
+        for comment in self.comments:
+            date_str = comment.created_at.strftime(self.config.datetime_format)
+            rows.append(f"> \[{date_str}]:\n    {comment.text}")
+        rows.append("")
+
+        yield Panel(
+            Group(*rows),
+            title=":speech_balloon: Comments",
+            title_align="left",
+            box=box.HORIZONTALS,
+            style="comments",
+            border_style="comments.box"
+        )
+
+
+@dataclass
 class ElementInfo:
     """Renderiza un elemento como panel detallado"""
 
@@ -178,6 +203,10 @@ class ElementInfo:
                     f"'[white][green]bebop[/] push -o [token]{self.token}[/] [dim]\[OPTIONS][/] TITLE[/]'"
                 )
                 parts.append(help_panel)
+            parts.append("")
+
+        if len(self.element.comments):
+            parts.append(CommentsBox(self.element.comments, self.config))
             parts.append("")
 
         if len(self.element.comments):
