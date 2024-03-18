@@ -61,6 +61,11 @@ Find more useful commands by passing the `--help` option
 bebop --help
 ```
 
+## Known Issues
+- Bebop currently does not run on Windows, but i'm working on it.
+
+## Screens
+
 ![example](docs/bebop_show.svg)
 
 ## Acknowledgements
