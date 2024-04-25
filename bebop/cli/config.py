@@ -61,8 +61,10 @@ class BebopConfig(BaseModel):
 
     @classmethod
     def load_config(cls) -> "BebopConfig":
-        config_path = cls.get_config_path()
+        root_path = cls.get_root_path()
+        root_path.mkdir(exist_ok=True)
 
+        config_path = cls.get_config_path()
         if not config_path.is_file():
             config = cls()
             dump = config.model_dump_json(indent=2, by_alias=True)
